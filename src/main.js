@@ -13,3 +13,5 @@ document.querySelector('#formulario').innerHTML = formulario.template
 miTabla.borrar()
 home.script()
 console.log(miTabla.usuarios);
+miTabla.editar()
+miTabla.agregar()

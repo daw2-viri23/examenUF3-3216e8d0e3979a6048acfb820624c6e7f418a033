@@ -70,6 +70,52 @@ export const miTabla = {
             }
             
         })
+    },
+    agregar: ()=>{
+        const enviarForm = document.querySelector('#enviarForm')
+        console.log('boton' , enviarForm)
+
+        enviarForm.addEventListener('click', (event)=>{
+            var dadesUsuari = new Object()
+            dadesUsuari.id = uuidv4()
+            dadesUsuari.cantidad = document.querySelector('#cantidad').value
+            dadesUsuari.nombre = document.querySelector('#birra').value
+            event.preventDefault()
+            console.log('se ha hecho click en el boton de enviar formulario')
+            console.log(dadesUsuari)
+            miTabla.usuarios.push(dadesUsuari)
+            console.log(miTabla.usuarios)
+
+            let nuevoUsuario = `
+                
+            <tr id="userid1${dadesUsuari.id}" class="d-none">
+                <td>${dadesUsuari.cantidad}</td>
+                <td id="nick-tabla">${dadesUsuari.nombre}</td>
+                <td><button type="button" class="editar btn btn-primary ml-5 " data-id="${dadesUsuari.id}">✏️</button></td>
+                <td><button type="button" class="borrar1 btn btn-danger" data-id="${dadesUsuari.id}">🗑️</button></td>
+            </tr>`
+
+                const tr = document.createElement('tr')
+                tr.setAttribute("id", dadesUsuari.id)
+                tr.innerHTML = nuevoUsuario
+
+                document.querySelector('tbody').append(tr)
+
+           // document.querySelector('main').addEventListener('click', (event)=>{
+                //if(event.target.classList.contains('borrar1')){
+                  //  var idUsuari = '#userid1' + event.target.dataset.id
+                //console.log('has hecho click en borrar al usuario ' + idUsuari)
+                //document.querySelector(idUsuari).classList.add('d-none')
+               // }
+           // })
+
+
+            
+        })
+
+
+
+
     }
 }
 
